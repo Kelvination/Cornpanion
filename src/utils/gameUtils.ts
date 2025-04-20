@@ -21,14 +21,18 @@ export const addPointsToTeam = (
   gameState: GameState,
   settings: GameSettings
 ): GameState => {
-  // Store previous scores for undo functionality
+  // Store previous state for undo functionality
   const lastScoreUpdate = {
     team1PrevScore: gameState.team1Score,
-    team2PrevScore: gameState.team2Score
+    team2PrevScore: gameState.team2Score,
+    roundNumberPrev: gameState.roundNumber,
+    throwingTeamPrev: gameState.throwingTeam,
+    isGameOverPrev: gameState.isGameOver,
+    winningTeamPrev: gameState.winningTeam,
   };
 
   // Add points to the appropriate team
-  const newState = { ...gameState, lastScoreUpdate };
+  const newState: GameState = { ...gameState, lastScoreUpdate }; // Explicitly type newState
 
   if (teamNumber === 1) {
     newState.team1Score = applyBustRule(gameState.team1Score + points, settings);
@@ -54,10 +58,14 @@ export const calculateMathModeScore = (
   gameState: GameState,
   settings: GameSettings
 ): GameState => {
-  // Store previous scores
+  // Store previous state
   const lastScoreUpdate = {
     team1PrevScore: gameState.team1Score,
-    team2PrevScore: gameState.team2Score
+    team2PrevScore: gameState.team2Score,
+    roundNumberPrev: gameState.roundNumber,
+    throwingTeamPrev: gameState.throwingTeam,
+    isGameOverPrev: gameState.isGameOver,
+    winningTeamPrev: gameState.winningTeam,
   };
 
   // Calculate raw scores for each team
@@ -67,7 +75,7 @@ export const calculateMathModeScore = (
   // Calculate net score
   const netScore = team1RawScore - team2RawScore;
 
-  const newState = {
+  const newState: GameState = { // Explicitly type newState
     ...gameState,
     lastScoreUpdate,
     roundNumber: gameState.roundNumber + 1
@@ -98,13 +106,17 @@ export const resetTeamScore = (
   gameState: GameState,
   settings: GameSettings
 ): GameState => {
-  // Store previous scores for undo functionality
+  // Store previous state for undo functionality
   const lastScoreUpdate = {
     team1PrevScore: gameState.team1Score,
-    team2PrevScore: gameState.team2Score
+    team2PrevScore: gameState.team2Score,
+    roundNumberPrev: gameState.roundNumber,
+    throwingTeamPrev: gameState.throwingTeam,
+    isGameOverPrev: gameState.isGameOver,
+    winningTeamPrev: gameState.winningTeam,
   };
 
-  const newState = { ...gameState, lastScoreUpdate };
+  const newState: GameState = { ...gameState, lastScoreUpdate }; // Explicitly type newState
 
   if (teamNumber === 1) {
     newState.team1Score = settings.bustResetScore;
@@ -122,13 +134,17 @@ export const setTeamScore = (
   gameState: GameState,
   settings: GameSettings
 ): GameState => {
-  // Store previous scores for undo functionality
+  // Store previous state for undo functionality
   const lastScoreUpdate = {
     team1PrevScore: gameState.team1Score,
-    team2PrevScore: gameState.team2Score
+    team2PrevScore: gameState.team2Score,
+    roundNumberPrev: gameState.roundNumber,
+    throwingTeamPrev: gameState.throwingTeam,
+    isGameOverPrev: gameState.isGameOver,
+    winningTeamPrev: gameState.winningTeam,
   };
 
-  const newState = { ...gameState, lastScoreUpdate };
+  const newState: GameState = { ...gameState, lastScoreUpdate }; // Explicitly type newState
 
   if (teamNumber === 1) {
     newState.team1Score = applyBustRule(score, settings);
@@ -164,9 +180,11 @@ export const undoLastScore = (gameState: GameState): GameState => {
     ...gameState,
     team1Score: gameState.lastScoreUpdate.team1PrevScore,
     team2Score: gameState.lastScoreUpdate.team2PrevScore,
-    isGameOver: false,
-    winningTeam: undefined,
-    lastScoreUpdate: undefined
+    roundNumber: gameState.lastScoreUpdate.roundNumberPrev, // Restore round number
+    throwingTeam: gameState.lastScoreUpdate.throwingTeamPrev, // Restore throwing team
+    isGameOver: gameState.lastScoreUpdate.isGameOverPrev, // Restore game over status
+    winningTeam: gameState.lastScoreUpdate.winningTeamPrev, // Restore winning team
+    lastScoreUpdate: undefined // Clear the undo state
   };
 };
 
