@@ -43,7 +43,9 @@ export const generateUniqueLobbyId = async (): Promise<string> => {
 
 // Get a shareable join link for a lobby
 export const getShareableLobbyLink = (lobbyId: string): string => {
-  return `${window.location.origin}?join=${lobbyId}`;
+  // Construct the base URL, ensuring it includes the potential base path
+  const baseUrl = `${window.location.origin}/Cornpanion`; // Added /Cornpanion
+  return `${baseUrl}?join=${lobbyId}`;
 };
 
 // Default game settings

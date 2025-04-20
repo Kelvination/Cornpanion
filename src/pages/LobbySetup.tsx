@@ -86,11 +86,14 @@ const LobbySetup = () => {
   }, [updateGameSettings]);
 
   // Handler for updating team settings
-  const handleTeamChange = useCallback((team: 1 | 2, field: string, value: any) => {
+  const handleTeamChange = useCallback((team: 1 | 2, value: TeamColor) => {
+    // Automatically set the name based on the color
+    const newName = `Team ${value.charAt(0).toUpperCase() + value.slice(1)}`;
     const updateData: any = {};
     updateData[`team${team}`] = {
       ...gameSettings[`team${team}`],
-      [field]: value
+      color: value,
+      name: newName // Set the name automatically
     };
     updateGameSettings(updateData);
   }, [updateGameSettings, gameSettings]);
@@ -150,9 +153,11 @@ const LobbySetup = () => {
         <h2>Lobby Code</h2>
         <div className="lobby-code">{currentLobbyId}</div>
         {isHost && (
-          <button onClick={copyInviteLink} className="button secondary">
-            Copy Invite Link
-          </button>
+          <div className="copy-link-container"> {/* Added a container */}
+            <button onClick={copyInviteLink} className="button secondary">
+              Copy Invite Link
+            </button>
+          </div>
         )}
       </div>
 
@@ -195,7 +200,7 @@ const LobbySetup = () => {
               onChange={(e) => handleSettingChange('bustRuleEnabled', e.target.checked)}
             />
             <span className="toggle-label">Enabled</span>
-            <p className="setting-info">If enabled, exceeding the Score Limit resets a team's score.</p>
+            <p className="setting-info">If enabled, exceeding the Score Limit resets a team's score to the defined 'Bust Reset Score'.</p>
             {gameSettings.bustRuleEnabled && (
               <div className="setting-group">
                 <label htmlFor="bustResetScore">Bust Reset Score:</label>
@@ -207,10 +212,7 @@ const LobbySetup = () => {
                   value={gameSettings.bustResetScore}
                   onChange={(e) => handleSettingChange('bustResetScore', parseInt(e.target.value) || 15)}
                 />
-                <div className="setting-info">
-                  Score to reset to when busting (exceeding score limit)
-                </div>
-                <p className="setting-info">The score a team resets to if they bust.</p>
+                <p className="setting-info">The score a team resets to if they go over the Score Limit.</p>
               </div>
             )}
           </div>
@@ -235,15 +237,9 @@ const LobbySetup = () => {
 
             <div className="team-setting">
               <h4>Team 1</h4>
-              <input
-                type="text"
-                placeholder="Team 1 Name"
-                value={gameSettings.team1.name}
-                onChange={(e) => handleTeamChange(1, 'name', e.target.value)}
-              />
               <select
                 value={gameSettings.team1.color}
-                onChange={(e) => handleTeamChange(1, 'color', e.target.value as TeamColor)}
+                onChange={(e) => handleTeamChange(1, e.target.value as TeamColor)}
               >
                 <option value="red">Red</option>
                 <option value="blue">Blue</option>
@@ -256,15 +252,9 @@ const LobbySetup = () => {
 
             <div className="team-setting">
               <h4>Team 2</h4>
-              <input
-                type="text"
-                placeholder="Team 2 Name"
-                value={gameSettings.team2.name}
-                onChange={(e) => handleTeamChange(2, 'name', e.target.value)}
-              />
               <select
                 value={gameSettings.team2.color}
-                onChange={(e) => handleTeamChange(2, 'color', e.target.value as TeamColor)}
+                onChange={(e) => handleTeamChange(2, e.target.value as TeamColor)}
               >
                 <option value="blue">Blue</option>
                 <option value="red">Red</option>
