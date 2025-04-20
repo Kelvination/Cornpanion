@@ -1,0 +1,788 @@
+:root {
+  /* Earthy Palette */
+  --primary-color: #5D4037; /* Deep Brown */
+  --secondary-color: #BF360C; /* Terracotta/Deep Orange */
+  --tertiary-color: #8BC34A; /* Light Green */
+  --info-color: #607D8B; /* Blue Grey */
+  --light-bg: #F5F5F5; /* Off-white (keep similar for readability) */
+  --dark-bg: #3E2723; /* Dark Brown */
+  --text-light: #EFEBE9; /* Light Beige */
+  --text-dark: #4E342E; /* Dark Brown/Grey */
+  --error-color: #D32F2F; /* Muted Red */
+  --warning-color: #FFA000; /* Muted Orange */
+  --success-color: #689F38; /* Olive Green */
+
+  /* Team colors - Earthy Tones (Adjusted Red) */
+  --team-red: #E53935; /* Material Design Red 600 */
+  --team-blue: #7986CB; /* Muted Blue (Indigo) */
+  --team-green: #7CB342; /* Lime Green */
+  --team-yellow: #FFB300; /* Keep Yellow (or change to #D4A017 - Gold) */
+  --team-purple: #9575CD; /* Muted Purple */
+  --team-orange: #FF8A65; /* Light Terracotta */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Button Styles */
+.button {
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  margin: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button.primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.button.secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.button.tertiary {
+  background-color: var(--tertiary-color);
+  color: white;
+}
+
+.button.info {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 8px;
+  font-size: 16px;
+}
+
+/* HOME PAGE */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.home-container header {
+  margin-bottom: 40px;
+}
+
+.home-container h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.home-container h2 {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-weight: 400;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+}
+
+.button-container .button {
+  margin-bottom: 16px;
+  padding: 14px 20px;
+  font-size: 18px;
+}
+
+.error-message {
+  color: var(--error-color);
+  margin: 20px 0;
+  padding: 10px;
+  background-color: rgba(244, 67, 54, 0.1);
+  border-radius: 4px;
+  max-width: 300px;
+}
+
+/* ABOUT PAGE */
+.about-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.about-content {
+  margin-bottom: 40px;
+}
+
+.about-section {
+  margin-bottom: 24px;
+}
+
+.about-section h3 {
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+}
+
+/* LOBBY SETUP PAGE */
+.lobby-container {
+  padding: 20px;
+  max-width: 600px; /* Slightly narrower for better focus */
+  margin: 20px auto; /* Add some top/bottom margin */
+  background-color: #fff; /* Give it a background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+.lobby-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px; /* Add padding below header */
+  border-bottom: 1px solid #eee; /* Separator line */
+}
+
+.lobby-container header h1 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.8rem; /* Adjust size */
+  color: var(--primary-color);
+}
+
+.lobby-code-section {
+  background-color: var(--light-bg); /* Lighter background */
+  padding: 20px; /* More padding */
+  border-radius: 8px;
+  margin-bottom: 25px; /* More space below */
+  text-align: center;
+  border: 1px solid #ddd; /* Subtle border */
+}
+
+.lobby-code-section h2 {
+  margin-bottom: 10px;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.lobby-code {
+  font-size: 2.5rem; /* Larger code */
+  font-weight: bold;
+  letter-spacing: 4px; /* More spacing */
+  margin: 10px 0 15px; /* Adjust margins */
+  color: var(--secondary-color); /* Use secondary color */
+  background-color: #fff; /* White background for code */
+  padding: 10px 15px; /* Padding around code */
+  border-radius: 4px; /* Rounded corners for code bg */
+  display: inline-block; /* Allow padding */
+  border: 1px solid #ddd;
+}
+
+.lobby-code-section .button.secondary {
+  margin-top: 10px; /* Space above button */
+  font-size: 14px; /* Smaller button text */
+  padding: 8px 16px; /* Smaller button padding */
+}
+
+.connected-users-section {
+  background-color: #fff; /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  border: 1px solid #eee;
+}
+
+.connected-users-section h2 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.users-list {
+  list-style-type: none;
+  padding: 0;
+  max-height: 150px; /* Limit height and allow scroll if needed */
+  overflow-y: auto;
+}
+
+.users-list li {
+  padding: 10px 5px; /* More padding */
+  border-bottom: 1px solid #f0f0f0; /* Lighter separator */
+  font-size: 1rem;
+}
+
+.users-list li:last-child {
+  border-bottom: none; /* Remove border for last item */
+}
+
+.host-user {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.settings-section, .joiner-settings {
+  background-color: #fff;
+  padding: 25px; /* More padding */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  margin-bottom: 25px;
+}
+
+.settings-section h2, .joiner-settings h2 {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.setting-group {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.setting-group:last-of-type {
+  border-bottom: none;
+}
+
+.setting-group label {
+  flex-basis: 180px; /* Fixed width for labels */
+  margin-right: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+.setting-group input[type="number"],
+.setting-group input[type="checkbox"],
+.setting-group select {
+  margin-right: 8px;
+}
+
+.setting-group input[type="number"] {
+  width: 70px; /* Slightly wider */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.setting-group input[type="checkbox"] {
+  height: 18px; /* Larger checkbox */
+  width: 18px;
+  cursor: pointer;
+}
+
+.toggle-label {
+  margin-left: 4px; /* Reduced margin */
+  font-weight: normal;
+  color: #555;
+}
+
+.setting-info {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 5px;
+  flex-basis: 100%; /* Take full width below the input */
+  padding-left: 195px; /* Align with inputs */
+}
+
+.teams-settings {
+  margin-top: 30px; /* Space above team settings */
+  margin-bottom: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.teams-settings h3 {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.team-setting {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.team-setting h4 {
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.team-setting input, .team-setting select {
+  width: calc(100% - 18px); /* Adjust width */
+  padding: 10px; /* More padding */
+  margin-bottom: 10px; /* More space */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px; /* More space above button */
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.start-button {
+  padding: 14px 36px; /* Larger button */
+  font-size: 18px;
+}
+
+.joiner-settings .setting-item {
+  padding: 12px 0; /* Adjust padding */
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+}
+
+.joiner-settings .setting-item:last-child {
+  border-bottom: none;
+}
+
+.joiner-settings strong {
+  display: inline-block;
+  min-width: 150px; /* Align values */
+  color: #333;
+}
+
+.waiting-message {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px; /* More padding */
+  background-color: var(--light-bg);
+  border-radius: 6px;
+  color: #555;
+  font-style: italic;
+  border: 1px solid #ddd;
+}
+
+/* SCOREBOARD PAGE */
+.scoreboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.scoreboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.round-indicator {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.exit-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.throwing-indicator {
+  text-align: center;
+  padding: 8px;
+  background-color: #f0f0f0;
+  font-weight: 500;
+}
+
+.throwing-team {
+  font-weight: bold;
+}
+
+.scores-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.team-score {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  /* Remove team-specific background color */
+  /* color: white; */ /* Adjust text color if needed */
+  background-color: var(--light-bg); /* Use a muted background */
+  color: var(--text-dark); /* Ensure text is readable on light bg */
+  position: relative;
+  transition: transform 0.2s;
+  border-left: 1px solid #eee; /* Add subtle separator */
+}
+
+.team-score:first-child {
+  border-left: none;
+}
+
+/* Remove empty rulesets */
+/* .team-1 {} */
+/* .team-2 {} */
+
+.active-team {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Adjust shadow for light bg */
+  z-index: 1;
+  background-color: #fff; /* Slightly different bg for active? Optional */
+}
+
+.team-score h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  /* Apply team color to the name */
+}
+
+/* Apply specific team colors to names */
+.team-1 h2 {
+  color: var(--team-red);
+}
+
+.team-2 h2 {
+  color: var(--team-blue);
+}
+
+.score {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.score-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.score-actions button {
+  flex: 1 0 calc(50% - 16px);
+  margin: 8px;
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  /* background-color: rgba(255, 255, 255, 0.9); */ /* Change button background */
+  background-color: #fff; /* White background for buttons */
+  color: var(--text-dark); /* Dark text for buttons */
+  border: 1px solid #ddd; /* Add subtle border to buttons */
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 60px;
+}
+
+.add-button {
+  /* background-color: rgba(255, 255, 255, 0.8) !important; */
+  /* color: #333; */
+  font-size: 18px;
+}
+
+.subtract-button {
+  font-size: 18px;
+  background-color: #f8f8f8; /* Slightly different background for subtract */
+}
+
+.bust-button {
+  background-color: var(--error-color) !important; /* Use theme error color */
+  color: white !important;
+}
+
+.override-button {
+  background-color: var(--info-color) !important; /* Use theme info color */
+  color: white !important;
+  font-size: 14px;
+}
+
+.game-controls {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ddd;
+}
+
+.game-controls button {
+  padding: 10px 16px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.math-mode-button {
+  background-color: var(--info-color) !important;
+  color: white !important;
+}
+
+.reset-button {
+  background-color: var(--warning-color) !important;
+  color: white !important;
+}
+
+.undo-button {
+  background-color: var(--secondary-color) !important;
+  color: white !important;
+}
+
+.lobby-button {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+/* GAME OVER */
+.game-over-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.winner-message {
+  font-size: 2.5rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 40px;
+  animation: winner-animation 1.5s infinite alternate;
+}
+
+@keyframes winner-animation {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+.game-over-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.game-over-actions button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  min-width: 250px;
+}
+
+/* Style the new Go Back button */
+.go-back-button {
+  background-color: var(--secondary-color) !important; /* Match undo button */
+  color: white !important;
+}
+
+.new-game-button {
+  background-color: var(--success-color);
+  color: white;
+}
+
+/* MODALS */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal h3 {
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.modal p {
+  margin-bottom: 20px;
+}
+
+.modal input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  margin-left: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirm-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* 404 NOT FOUND PAGE */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.not-found-container h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.not-found-container p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  /* Removed Math Mode media queries */
+  /*
+  .math-mode-teams {
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .math-mode-team {
+    flex: 1;
+  }
+  */
+}
+
+@media (max-width: 480px) {
+  .score {
+    font-size: 4rem;
+  }
+  
+  .score-actions button {
+    padding: 10px;
+  }
+  
+  .game-controls {
+    flex-wrap: wrap;
+  }
+  
+  .game-controls button {
+    flex: 1 0 calc(50% - 10px);
+    margin: 5px;
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 360px) {
+  .home-container h1 {
+    font-size: 2.5rem;
+  }
+  
+  .score {
+    font-size: 3.5rem;
+  }
+  
+  .winner-message {
+    font-size: 2rem;
+  }
+}

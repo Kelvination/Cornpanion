@@ -1,0 +1,47 @@
+{
+  "name": "Cornpanion - Cornhole Scoreboard",
+  "short_name": "Cornpanion",
+  "description": "A real-time cornhole scoreboard app for tracking game scores",
+  "theme_color": "#3f51b5",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Host Game",
+      "short_name": "Host",
+      "description": "Host a new cornhole game",
+      "url": "/?mode=host"
+    },
+    {
+      "name": "Solo Game",
+      "short_name": "Solo",
+      "description": "Start a solo cornhole game",
+      "url": "/?mode=solo"
+    }
+  ],
+  "categories": [
+    "sports",
+    "games"
+  ]
+}
