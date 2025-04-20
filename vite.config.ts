@@ -81,5 +81,5 @@ export default defineConfig({
       }
     })
   ],
-  base: './' // This helps with GitHub Pages deployment
+  base: '/Cornpanion/' // Set base path for GitHub Pages
 })
