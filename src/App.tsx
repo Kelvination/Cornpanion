@@ -46,7 +46,7 @@ function App() {
   // const [userName, setUserName] = useAtom(userNameAtom); // Keep atom if needed elsewhere, but remove prompt logic
 
   return (
-    <Router>
+    <Router basename="/Cornpanion">
       <RedirectHandler />
       <Routes>
         <Route path="/" element={<Home />} />
